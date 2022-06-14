@@ -19,3 +19,4 @@ coverage/
 /storage
 db/cms_fixtures/test-site/
 .idea
+.byebug_history
