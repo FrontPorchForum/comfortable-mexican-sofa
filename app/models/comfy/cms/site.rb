@@ -45,7 +45,7 @@ class Comfy::Cms::Site < ActiveRecord::Base
     Comfy::Cms::Site.where(hostname: real_host_from_aliases(host)).each do |site|
       if site.path.blank?
         cms_site = site
-      elsif "#{path.to_s.split('?')[0]}/" =~ %r{^/#{Regexp.escape(site.path.to_s)}/}
+      elsif %r{^/#{Regexp.escape(site.path.to_s)}/}.match?("#{path.to_s.split('?')[0]}/")
         cms_site = site
         break
       end

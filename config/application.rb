@@ -13,7 +13,7 @@ module ComfortableMexicanSofa
 
     require_relative "../lib/comfortable_mexican_sofa"
 
-    config.load_defaults 5.2
+    config.load_defaults 6.1
 
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
@@ -34,6 +34,10 @@ module ComfortableMexicanSofa
     config.paths["config/routes.rb"] << "config/cms_routes.rb"
 
     config.i18n.enforce_available_locales = true
+    config.i18n.raise_on_missing_translations = true
+    config.action_view.form_with_generates_remote_forms = true
+    config.active_record.legacy_connection_handling = false
+    config.active_storage.replace_on_assign_to_many = true
 
   end
 end

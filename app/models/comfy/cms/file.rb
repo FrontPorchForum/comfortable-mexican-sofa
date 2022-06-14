@@ -30,6 +30,8 @@ class Comfy::Cms::File < ActiveRecord::Base
     after_save :process_attachment
   end
 
+  after_save :clear_page_content_cache
+
   # -- Validations -------------------------------------------------------------
   validates :label, presence: true
   validates :file, presence: true, on: :create
@@ -56,7 +58,13 @@ protected
 
   def process_attachment
     return if @file.blank?
-    attachment.attach(@file)
+    self.attachment = @file
+  end
+
+private
+
+  def clear_page_content_cache
+    Comfy::Cms::Page.where(id: site.pages.pluck(:id)).update_all(content_cache: nil)
   end
 
 end
