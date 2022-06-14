@@ -7,11 +7,9 @@ module ComfortableMexicanSofa::RenderMethods
     # CMS will attempt to find one. This is so you don't have to explicitly
     # call render cms_page: '/something'
     base.rescue_from "ActionView::MissingTemplate" do |e|
-      begin
-        render cms_page: request.path
-      rescue ComfortableMexicanSofa::MissingPage, ComfortableMexicanSofa::MissingSite
-        raise e
-      end
+      render cms_page: request.path
+    rescue ComfortableMexicanSofa::MissingPage, ComfortableMexicanSofa::MissingSite
+      raise e
     end
   end
 

@@ -1,13 +1,17 @@
 default:
-  key: 123abc
+  key: CvhQkrrFhagee8UqRke814N7
   filename: default.jpg
-  content_type: image/jpg
-  byte_size: 12345
-  checksum: 123abc
+  content_type: image/jpeg
+  metadata: '{ "identified": true }'
+  byte_size: 2048,
+  checksum: znbHGTOjso1pu24KAVszMA==
+  service_name: test_fixtures
 
 fragment:
-  key: 456def
+  key: rqMND75QhtFLGZQTaSAXnpqo
   filename: fragment.jpg
-  content_type: image/jpg
-  byte_size: 12345
-  checksum: 456def
+  content_type: image/jpeg
+  metadata: '{ "identified": true }'
+  byte_size: 2615
+  checksum: VoYNWBZU3uHa+JPKq+90dA==
+  service_name: test_fixtures

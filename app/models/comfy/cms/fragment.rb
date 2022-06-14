@@ -55,9 +55,10 @@ protected
     if tag == "file"
       @files = [@files.first]
       attachments&.purge_later
+      self.attachments = @files
+    else
+      attachments.attach(@files)
     end
-
-    attachments.attach(@files)
   end
 
 end

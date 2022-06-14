@@ -19,7 +19,7 @@ require_relative "../config/environment"
 
 require "rails/test_help"
 require "rails/generators"
-require "mocha/setup"
+require "mocha/minitest"
 
 Rails.backtrace_cleaner.remove_silencers!
 
@@ -71,9 +71,9 @@ class ActiveSupport::TestCase
   # Example usage:
   #   assert_has_errors_on @record, :field_1, :field_2
   def assert_has_errors_on(record, *fields)
-    unmatched = record.errors.keys - fields.flatten
+    unmatched = record.errors.attribute_names - fields.flatten
     assert unmatched.blank?, "#{record.class} has errors on '#{unmatched.join(', ')}'"
-    unmatched = fields.flatten - record.errors.keys
+    unmatched = fields.flatten - record.errors.attribute_names
     assert unmatched.blank?, "#{record.class} doesn't have errors on '#{unmatched.join(', ')}'"
   end
 
@@ -126,7 +126,7 @@ class ActionDispatch::IntegrationTest
       ComfortableMexicanSofa::AccessControl::AdminAuthentication.password
     )
     options[:headers] = headers
-    send(method, path, options)
+    send(method, path, **options)
   end
 
   def with_routing
@@ -251,7 +251,7 @@ class ApplicationSystemTestCase < ActionDispatch::SystemTestCase
   end
 
   def assert_no_javascript_errors
-    assert_empty page.driver.browser.manage.logs.get(:browser)
+    assert_empty page.driver.browser.logs.get(:browser)
       .select { |e| e.level == "SEVERE" && e.message.present? }.map(&:message).to_a
   end
 

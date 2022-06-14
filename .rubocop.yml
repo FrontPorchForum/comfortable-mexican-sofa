@@ -1,9 +1,14 @@
+require:
+  - rubocop-performance
+
 AllCops:
-  TargetRubyVersion: 2.3
+  TargetRubyVersion: 2.7
+  NewCops: disable
   Exclude:
     - bin/*
     - db/schema.rb
     - db/migrate/**/*
+    - gemfiles/**/*
     - test/fixtures/**/*
     - tmp/**/*
 
@@ -18,14 +23,8 @@ Metrics/PerceivedComplexity:
 Metrics/MethodLength:
   Enabled: false
 
-Metrics/MethodLength:
-  Enabled: false
-
 Metrics/ParameterLists:
   Enabled: false
-
-Metrics/LineLength:
-  Max: 120
 
 Metrics/CyclomaticComplexity:
   Enabled: false
@@ -49,7 +48,7 @@ Layout/MultilineMethodCallIndentation:
 Layout/MultilineHashBraceLayout:
   Enabled: false
 
-Layout/IndentArray:
+Layout/FirstArrayElementIndentation:
   EnforcedStyle: consistent
 
 Layout/EmptyLinesAroundModuleBody:
@@ -61,11 +60,14 @@ Layout/EmptyLinesAroundExceptionHandlingKeywords:
 Layout/EmptyLinesAroundClassBody:
   EnforcedStyle: empty_lines_except_namespace
 
-Layout/AlignParameters:
+Layout/ParameterAlignment:
   Enabled: false
 
 Layout/AccessModifierIndentation:
   EnforcedStyle: outdent
+
+Layout/LineLength:
+  Max: 120
 
 # -- Style ---------------------------------------------------------------------
 Style/StringLiterals:
@@ -96,5 +98,66 @@ Style/AsciiComments:
   Enabled: false
 
 # -- Naming --------------------------------------------------------------------
-Naming/UncommunicativeMethodParamName:
+Naming/MethodParameterName:
+  Enabled: false
+
+# -- New cops ------------------------------------------------------------------
+
+# TODO: consider whether any of these should be enabled
+
+Layout/ArgumentAlignment:
+  Enabled: false
+
+Layout/EmptyLineAfterGuardClause:
+  Enabled: false
+
+Layout/HashAlignment:
+  Enabled: false
+
+Lint/SendWithMixinArgument:
+  Enabled: false
+
+Naming/RescuedExceptionsVariableName:
+  Enabled: false
+
+Naming/VariableNumber:
+  Enabled: false
+
+Performance/RegexpMatch:
+  Enabled: false
+
+Style/ExpandPathArguments:
+  Enabled: false
+
+Style/ExplicitBlockArgument:
+  Enabled: false
+
+Style/GlobalStdStream:
+  Enabled: false
+
+Style/HashAsLastArrayItem:
+  Enabled: false
+
+Style/MutableConstant:
+  Enabled: false
+
+Style/OptionalBooleanParameter:
+  Enabled: false
+
+Style/RedundantParentheses:
+  Enabled: false
+
+Style/RedundantRegexpEscape:
+  Enabled: false
+
+Style/RedundantReturn:
+  Enabled: false
+
+Style/SlicingWithRange:
+  Enabled: false
+
+Style/SoleNestedConditional:
+  Enabled: false
+
+Style/StringConcatenation:
   Enabled: false
