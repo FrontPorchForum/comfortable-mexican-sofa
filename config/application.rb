@@ -13,7 +13,23 @@ module ComfortableMexicanSofa
 
     require_relative "../lib/comfortable_mexican_sofa"
 
-    config.load_defaults 6.1
+    config.load_defaults 7.0
+    Rails.application.config.active_storage.variant_processor = :mini_magick
+
+    # YAML serialization is used for revisions that include various Ruby
+    # classes that aren't supported by YAML's safe_load method by default.
+    # Make them so.
+    #
+    # Note that this (re)introduces a potential security hole (though exactly
+    # which classes are potentially unsafe to deserialize and why isn't clear).
+    config.active_record.yaml_column_permitted_classes = [
+      ActiveSupport::HashWithIndifferentAccess,
+      ActiveSupport::SafeBuffer,
+      ActiveSupport::TimeWithZone,
+      ActiveSupport::TimeZone,
+      Symbol,
+      Time
+    ]
 
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
@@ -36,8 +52,6 @@ module ComfortableMexicanSofa
     config.i18n.enforce_available_locales = true
     config.i18n.raise_on_missing_translations = true
     config.action_view.form_with_generates_remote_forms = true
-    config.active_record.legacy_connection_handling = false
-    config.active_storage.replace_on_assign_to_many = true
 
   end
 end

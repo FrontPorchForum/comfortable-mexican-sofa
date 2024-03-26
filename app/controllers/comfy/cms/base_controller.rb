@@ -19,8 +19,8 @@ protected
     if @cms_site
       if @cms_site.path.present? && !params[:site_id]
         if params[:cms_path]&.match(%r{\A#{@cms_site.path}})
-          params[:cms_path].gsub!(%r{\A#{@cms_site.path}}, "")
-          params[:cms_path]&.gsub!(%r{\A/}, "")
+          params[:cms_path].delete_prefix!(@cms_site.path)
+          params[:cms_path]&.delete_prefix!("/")
         else
           raise ActionController::RoutingError, "Site Not Found"
         end

@@ -9,15 +9,15 @@ Gem::Specification.new do |s|
   s.authors       = ["Oleg Khabarov"]
   s.email         = ["oleg@khabarov.ca"]
   s.homepage      = "http://github.com/comfy/comfortable-mexican-sofa"
-  s.summary       = "Rails 6.1+ CMS Engine"
-  s.description   = "ComfortableMexicanSofa is a powerful Rails 6.1+ CMS Engine"
+  s.summary       = "Rails 7.1+ CMS Engine"
+  s.description   = "ComfortableMexicanSofa is a powerful Rails 7.1+ CMS Engine"
   s.license       = "MIT"
 
   s.files = `git ls-files -z`.split("\x0").reject do |f|
     f.match(%r{^(test|doc)/})
   end
 
-  s.required_ruby_version = ">= 2.7.0"
+  s.required_ruby_version = ">= 3.1.0"
 
   s.add_dependency "active_link_to",        ">= 1.0.0"
   s.add_dependency "comfy_bootstrap_form",  ">= 4.0.0"
@@ -26,7 +26,7 @@ Gem::Specification.new do |s|
   s.add_dependency "kramdown",              ">= 1.0.0"
   s.add_dependency "mimemagic",             ">= 0.3.2"
   s.add_dependency "mini_magick",           ">= 4.8.0"
-  s.add_dependency "rails",                 ">= 6.1.0"
+  s.add_dependency "rails",                 ">= 7.1.0"
   s.add_dependency "rails-i18n",            ">= 5.0.0"
   s.add_dependency "sassc-rails",           ">= 2.0.0"
 end

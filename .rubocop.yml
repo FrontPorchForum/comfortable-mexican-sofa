@@ -2,7 +2,7 @@ require:
   - rubocop-performance
 
 AllCops:
-  TargetRubyVersion: 2.7
+  TargetRubyVersion: 3.1
   NewCops: disable
   Exclude:
     - bin/*
@@ -80,6 +80,9 @@ Style/Lambda:
   EnforcedStyle: literal
 
 Style/IfUnlessModifier:
+  Enabled: false
+
+Style/HashSyntax:
   Enabled: false
 
 Style/GuardClause:

@@ -6,8 +6,6 @@ ENV["RAILS_ENV"] = "test"
 # obviously don't cover everything 100%
 unless ENV["SKIP_COV"]
   require "simplecov"
-  require "coveralls"
-  SimpleCov.formatter = Coveralls::SimpleCov::Formatter
   SimpleCov.start do
     add_filter "lib/tasks"
     add_filter "lib/generators"
